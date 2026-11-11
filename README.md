@@ -13,7 +13,6 @@ This project documents A24's public media delivery and downloads its 333 catalog
 │   ├── download_media.py     # Current video downloader
 │   ├── streams.py            # HLS inspection and batch helpers
 │   └── authorize_keys.py     # Batch playback authorization helper
-├── research-sources.md       # Supporting first-party research
 ├── reports/                  # Sanitized triage findings (published)
 └── data/                     # Raw responses, inventories, status, and staging
     ├── titles.json

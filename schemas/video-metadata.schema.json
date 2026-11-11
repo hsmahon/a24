@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "video-metadata",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "brightcove_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "youtube_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration_in_seconds": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "is_vertical": {
+      "type": "boolean"
+    },
+    "punch_in": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "punch_out": {
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "closed_caption": {
+      "type": "boolean"
+    },
+    "director_commentary": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "brightcove_id",
+    "youtube_id"
+  ],
+  "additionalProperties": true
+}

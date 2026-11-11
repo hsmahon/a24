@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "videos",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "slug": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "content_type": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "is_member_content": {
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "video": {
+        "$ref": "video-metadata.schema.json"
+      },
+      "titles": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "id",
+      "video",
+      "titles"
+    ],
+    "additionalProperties": false
+  }
+}

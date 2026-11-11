@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "image",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": [
+        "integer",
+        "string"
+      ]
+    },
+    "src": {
+      "type": "string",
+      "format": "uri"
+    },
+    "alt": {
+      "type": "string"
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "width": {
+      "type": "number"
+    },
+    "height": {
+      "type": "number"
+    },
+    "focal_x": {
+      "type": "number"
+    },
+    "focal_y": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "src"
+  ],
+  "additionalProperties": true
+}

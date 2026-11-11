@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "associated-content",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string"
+      },
+      "display_name": {
+        "type": "string"
+      },
+      "slug": {
+        "type": "string"
+      },
+      "gid": {
+        "type": "string"
+      },
+      "content_type": {
+        "type": "string"
+      },
+      "is_member_content": {
+        "type": "boolean"
+      },
+      "static_art": {
+        "anyOf": [
+          {
+            "$ref": "image.schema.json"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "video": {
+        "$ref": "video-metadata.schema.json"
+      }
+    },
+    "required": [
+      "slug",
+      "video"
+    ],
+    "additionalProperties": true
+  }
+}

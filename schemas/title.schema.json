@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "title",
+  "type": "object",
+  "properties": {
+    "display_name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "title_type": {
+      "enum": [
+        "film",
+        "television"
+      ]
+    },
+    "static_art": {
+      "anyOf": [
+        {
+          "$ref": "image.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "live_phase": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "year": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "directors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "starring": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subtitle": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "playing_on": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "channel": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [],
+        "additionalProperties": true
+      }
+    },
+    "release_date_display_override": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "theatrical_tickets_on_sale_date": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "theatrical_showtimes_start": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "theatrical_showtimes_end": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "display_name",
+    "slug",
+    "title_type"
+  ],
+  "additionalProperties": true
+}

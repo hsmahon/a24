@@ -8,10 +8,11 @@ This project documents A24's public media delivery and downloads its 333 catalog
 ├── AGENTS.md
 ├── api-routes/                # Observed API routes, requests, and access behavior
 ├── schemas/                   # JSON Schema for API responses and local inventories
-├── harvest.py                # Catalog/page parsing and inventory generation
-├── download_media.py         # Current video downloader
-├── streams.py                # HLS inspection and batch helpers
-├── authorize_keys.py         # Batch playback authorization helper
+├── scripts/
+│   ├── harvest.py            # Catalog/page parsing and inventory generation
+│   ├── download_media.py     # Current video downloader
+│   ├── streams.py            # HLS inspection and batch helpers
+│   └── authorize_keys.py     # Batch playback authorization helper
 ├── research-sources.md       # Supporting first-party research
 ├── reports/                  # Sanitized triage findings (published)
 └── data/                     # Raw responses, inventories, status, and staging
@@ -95,7 +96,7 @@ The 333 Brightcove entries total approximately **43.24 hours**. Their selected a
 
 ## Running downloads
 
-This public repository contains source code and documentation. The `data/` directory, downloaded media, tokens, keys, signed URLs, and runtime captures are excluded from Git. The scripts currently assume the saved local catalog/page captures and player configuration from the investigation; they are not a standalone fresh-clone crawler. `harvest.py catalog` prepares detail requests from captured catalog JSON, and `harvest.py inventory` parses the saved responses.
+This public repository contains source code and documentation. The `data/` directory, downloaded media, tokens, keys, signed URLs, and runtime captures are excluded from Git. The scripts currently assume the saved local catalog/page captures and player configuration from the investigation; they are not a standalone fresh-clone crawler. `scripts/harvest.py catalog` prepares detail requests from captured catalog JSON, and `scripts/harvest.py inventory` parses the saved responses.
 
 Requirements: Python 3, `curl`, `ffmpeg`, and `ffprobe`. The downloader reads the saved inventory and refreshes Brightcove source URLs for each item.
 
@@ -103,13 +104,13 @@ Requirements: Python 3, `curl`, `ffmpeg`, and `ffprobe`. The downloader reads th
 cd /path/to/a24
 
 # Verify one video end to end.
-python download_media.py --id 6330628367112 --workers 1
+python scripts/download_media.py --id 6330628367112 --workers 1
 
 # Download the 333 Brightcove references, two at a time.
-python download_media.py --workers 2
+python scripts/download_media.py --workers 2
 
 # Retry only failed entries; recover staged files after validation.
-python download_media.py --failed-only --workers 2
+python scripts/download_media.py --failed-only --workers 2
 
 # Inspect the current per-video state.
 cat data/download-status.json
@@ -121,7 +122,7 @@ cat data/download.pid
 
 Completed files are verified and skipped on subsequent runs. Failed videos are recorded individually and are retried on a later run. Current FFmpeg transfers restart an unfinished video; they do not promise byte-level resume. A24 token requests are spaced at least 1.1 seconds apart. Failed HTTP requests remain visible in status. Images and YouTube videos are excluded, including when inventories are regenerated. DRM-protected sources are detected explicitly and reported as requiring a downloadable non-DRM rendition or source export. The runner does not obtain AWS credentials or enumerate other buckets.
 
-`harvest.py` regenerates inventories from the raw catalog/page/associated-response files. Its generated curl batches are discovery helpers; signed source URLs can expire and must not be treated as permanent download links. `streams.py` and `authorize_keys.py` retain the earlier inspection/batch workflow; use `download_media.py` for the current end-to-end download path.
+`scripts/harvest.py` regenerates inventories from the raw catalog/page/associated-response files. Its generated curl batches are discovery helpers; signed source URLs can expire and must not be treated as permanent download links. `scripts/streams.py` and `scripts/authorize_keys.py` retain the earlier inspection/batch workflow; use `scripts/download_media.py` for the current end-to-end download path.
 
 ## Schemas and evidence
 

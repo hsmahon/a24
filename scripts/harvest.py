@@ -3,7 +3,7 @@
 import argparse, json, re, hashlib, shutil, os
 from pathlib import Path
 from urllib.parse import urlsplit, urljoin
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(__file__).resolve().parents[1]
 D=ROOT/'data'
 MEDIA=Path(os.environ.get('A24_OUTPUT_DIR', Path.home() / 'Media' / 'a24')).expanduser().resolve()
 def dump(path,obj):

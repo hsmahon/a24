@@ -15,4 +15,4 @@ Successful unauthenticated requests returned an array of supplemental content ob
 | `video.youtube_id` | Alternate provider reference |
 | `video.duration_in_seconds` | Declared duration, seconds |
 
-Schema: [`associated-content.schema.json`](../schemas/associated-content.schema.json). Evidence: `data/associated/`. Title-page embedded data also supplies `primary_trailer` and content objects; `harvest.py` merges and deduplicates references by provider/video ID. Supplemental content is not synonymous with the title's full film or TV episodes.
+Schema: [`associated-content.schema.json`](../schemas/associated-content.schema.json). Evidence: `data/associated/`. Title-page embedded data also supplies `primary_trailer` and content objects; `scripts/harvest.py` merges and deduplicates references by provider/video ID. Supplemental content is not synonymous with the title's full film or TV episodes.
